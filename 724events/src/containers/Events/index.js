@@ -9,10 +9,6 @@ import "./style.css";
 
 const PER_PAGE = 9;
 
-function display(value){
-  console.log(value)
-}
-
 const EventList = () => {
   const { data, error } = useData();
   const [type, setType] = useState();
@@ -33,7 +29,6 @@ const EventList = () => {
   const changeType = (evtType) => {
     setCurrentPage(1);
     setType(evtType);
-    display(evtType)
   };
   const pageNumber = Math.floor((filteredEvents?.length || 0) / PER_PAGE) + 1;
   const typeList = new Set(data?.events.map((event) => event.type));
