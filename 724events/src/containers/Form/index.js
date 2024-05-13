@@ -20,6 +20,7 @@ const Form = ({ onSuccess, onError }) => {
         setSending(false);
         onError(err);
       }
+      onSuccess();
     },
     [onSuccess, onError]
   );
