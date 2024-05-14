@@ -16,14 +16,16 @@ import { useData } from "../../contexts/DataContext";
 
 const Page = () => {
   const {data} = useData()
-  /* function SearchLastEvent(){
-    const month = 1;
-    data?.events.map((event) => console.log(getMonth(new Date(event.date))));
+  async function SearchLastEvent(){
+    const lastEventFirst = data?.events.sort((evtA, evtB) =>
+      new Date(evtA.date) > new Date(evtB.date) ? -1 : 1
+    );
 
-    return month;
+    return lastEventFirst[0];
   }
 
-  const last = SearchLastEvent(); */
+  const last = SearchLastEvent();
+
   return <>
     <header>
       <Menu />
@@ -127,9 +129,9 @@ const Page = () => {
       <div className="col presta">
         <h3>Notre derniére prestation</h3>
         <EventCard
-          imageSrc={data?.events[0].cover}
-          title={data?.events[0].title}
-          date={new Date(data?.events[0].date)}
+          imageSrc={last.cover}
+          title={last.title}
+          date={new Date(last.date)}
           small
           label="boom"
         />
