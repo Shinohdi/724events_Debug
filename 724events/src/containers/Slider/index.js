@@ -36,21 +36,22 @@ const Slider = () => {
                 <div>{getMonth(new Date(event.date))}</div>
               </div>
             </div>
-            <div className="SlideCard__paginationContainer">
-              <div className="SlideCard__pagination">
-                {byDateDesc.map((evt, radioIdx) => (
-                  <input
-                    key={evt.id}
-                    type="radio"
-                    name="radio-button"
-                    checked={idx === radioIdx}
-                  />
-                ))}
-              </div>
-            </div>
           </div>
         </div>
       ))}
+      <div className="SlideCard__paginationContainer">
+        <div className="SlideCard__pagination">
+          {byDateDesc?.map((evt, radioIdx) => (
+            <input
+              readOnly
+              key={evt.id}
+              type="radio"
+              name="radio-button"
+              checked={index === radioIdx}
+            />
+          ))}
+          </div>
+      </div>
     </div>
   );
 };

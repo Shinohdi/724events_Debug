@@ -15,16 +15,18 @@ import { useData } from "../../contexts/DataContext";
 
 
 const Page = () => {
-  const {data} = useData()
-  async function SearchLastEvent(){
-    const lastEventFirst = data?.events.sort((evtA, evtB) =>
+  const {data} = useData();
+  /* function SearchLastEvent(){
+    const EventsDesc = data?.events.sort((evtA, evtB) =>
       new Date(evtA.date) > new Date(evtB.date) ? -1 : 1
     );
 
-    return lastEventFirst[0];
+    console.log(data);
+    const lastEvent = EventsDesc[0];
+    return lastEvent;
   }
 
-  const last = SearchLastEvent();
+  const last = SearchLastEvent(); */
 
   return <>
     <header>
@@ -108,7 +110,7 @@ const Page = () => {
         <Modal
           Content={
             <div className="ModalMessage--success">
-              <div>Message envoyé !</div>
+              <h3>Message envoyé !</h3>
               <p>
                 Merci pour votre message nous tâcherons de vous répondre dans
                 les plus brefs délais
@@ -119,7 +121,7 @@ const Page = () => {
           {({ setIsOpened }) => (
             <Form
               onSuccess={() => setIsOpened(true)}
-              onError={() => null}
+              onError={() => setIsOpened(false)}
             />
           )}
         </Modal>
@@ -129,9 +131,9 @@ const Page = () => {
       <div className="col presta">
         <h3>Notre derniére prestation</h3>
         <EventCard
-          imageSrc={last.cover}
-          title={last.title}
-          date={new Date(last.date)}
+          imageSrc={data?.cover}
+          title={data?.title}
+          date={new Date(data?.date)}
           small
           label="boom"
         />
