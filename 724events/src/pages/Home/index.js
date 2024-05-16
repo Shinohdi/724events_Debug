@@ -18,14 +18,14 @@ const Page = () => {
   const {data} = useData();
   function SearchLastEvent(){
     if(data && data.events.length > 0){
-      const EventsDesc = data?.events.sort((evtA, evtB) =>
+      let EventsCr = {...data};
+      EventsCr = EventsCr.events.sort((evtA, evtB) =>
         new Date(evtA.date) > new Date(evtB.date) ? -1 : 1
       );
-  
-      const lastEvent = EventsDesc[0];
+      const lastEvent = EventsCr[0];
       return lastEvent;
-    }
-  }
+    } 
+  } 
   const last = SearchLastEvent();
 
   return <>
@@ -110,7 +110,7 @@ const Page = () => {
         <Modal
           Content={
             <div className="ModalMessage--success">
-              <h3>Message envoyé !</h3>
+              <div>Message envoyé !</div>
               <p>
                 Merci pour votre message nous tâcherons de vous répondre dans
                 les plus brefs délais
