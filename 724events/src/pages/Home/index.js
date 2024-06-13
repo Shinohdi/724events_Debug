@@ -18,16 +18,19 @@ const Page = () => {
   const {data} = useData();
   function SearchLastEvent(){
     if(data && data.events.length > 0){
-      let EventsCr = {...data};
-      EventsCr = EventsCr.events.sort((evtA, evtB) =>
+      const EventsCr = {...data.events.sort((evtA, evtB) =>
         new Date(evtA.date) > new Date(evtB.date) ? -1 : 1
-      );
-      const lastEvent = EventsCr[0];
-      return lastEvent;
+      )};
+      return EventsCr[0];
     } 
   } 
   const last = SearchLastEvent();
-
+  // Remettre en ordre data par ID (????)
+  if(data){
+    const eventee = data.events.sort((evtA, evtB) => evtA.id < evtB.id ? -1 : 1)
+    console.log(eventee)
+  }
+  
   return <>
     <header>
       <Menu />
