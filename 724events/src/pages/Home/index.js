@@ -30,7 +30,7 @@ const Page = () => {
     const eventee = data.events.sort((evtA, evtB) => evtA.id < evtB.id ? -1 : 1)
     console.log(eventee)
   }
-  
+
   return <>
     <header>
       <Menu />

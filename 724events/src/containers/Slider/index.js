@@ -46,7 +46,7 @@ const Slider = () => {
           {byDateDesc?.map((evt, radioIdx) => (
             <input
               readOnly
-              key={evt.id}
+              key={evt.title}
               type="radio"
               name="radio-button"
               checked={index === radioIdx}
